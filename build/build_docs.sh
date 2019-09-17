@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+#set -e
 shopt -s extglob
 git config user.name "adibrastegarnia"
 git config user.email "arastega@purdue.edu"
@@ -17,12 +17,6 @@ cd ..
 git submodule add https://github.com/multirepo-docs/repo-docs-3.git
 cd repo-docs-3 && rm -rf !(docs)
 cd $CURRENT_PATH
-
-# skip if build is triggered by pull request
-if [ $TRAVIS_PULL_REQUEST == "true" ]; then
-  echo "this is PR, exiting"
-  exit 0
-fi
 
 # enable error reporting to the console
 set -e
